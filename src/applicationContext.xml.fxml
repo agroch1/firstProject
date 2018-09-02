@@ -1,0 +1,9 @@
+<bean id="stateLoggerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <property name="jobDetail" ref="stateLoggerJobDetail" />
+    <property name="cronExpression" value="0/10 * * * * ?" />
+</bean>
+
+<bean id="stateLoggerJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+<property name="targetObject" ref="stateLogger" />
+<property name="targetMethod" value="logSystemState" />
+</bean>

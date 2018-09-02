@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "classpath:org/apache/log4j/xml/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+   
+   <appender name="STATE_LOGGER" class="org.apache.log4j.RollingFileAppender">
+       <param name="File" value="${catalina.home}/logs/state.log" />
+       <param name="Append" value="true" />
+       <param name="MaxFileSize" value="100MB" />
+       <param name="MaxBackupIndex" value="3" />
+       
+       <layout class="org.apache.log4j.PatternLayout">
+           <param name="ConversionPattern" value="[%d{yy-MM-dd HH:mm:ss.SSS}] %m%n" />
+       </layout>
+   </appender>
+  	
+  	<logger name="state_logger" additivity="true">
+  		<level value="DEBUG" />
+  		<appender-ref ref="STATE_LOGGER" />
+  	</logger>
+
+    <root>
+    	<level value="WARN" />
+    	<appender-ref ref="FILE" />
+    </root>
+
+</log4j:configuration>
